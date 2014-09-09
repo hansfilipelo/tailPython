@@ -40,8 +40,10 @@ if os.path.isfile(path):
     # Read lines from file to stack
     for line in file.readlines():
         stack.append(line.rstrip('\n'))
+    
     # Reverse stack
     stack.reverse()
+
     # Print stack
     for i in range (0,len(stack)):
         printString=stack.pop()
@@ -49,6 +51,7 @@ if os.path.isfile(path):
         # Stop so that we don't print to many lines
         if i+1 >= nrOflines:
             sys.exit(0)
+
 # Else file does not exist
 else:
     print("File " + filename + " does not exist. Please enter a valid file")
