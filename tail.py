@@ -17,7 +17,7 @@ def helpText():
 # -------------- main program
 if __name__ == "__main__":
     nrOflines=25
-    filename=""
+    path=""
 
     # Check if user needs help
     if len(sys.argv) < 2:
@@ -54,5 +54,5 @@ if os.path.isfile(path):
 
 # Else file does not exist
 else:
-    print("File " + filename + " does not exist. Please enter a valid file")
+    print("File " + path + " does not exist. Please enter a valid file")
 
