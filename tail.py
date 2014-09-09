@@ -5,12 +5,12 @@ import sys,os
 # If user neeeds help
 def helpText():
     print ""
-    print "Multi-threaded suspender for VMware ESXi virtual machines. Suspends all machines on a given host. "
+    print "Simple tail implementation written in python."
     print ""
-    print "Created by: hansfilipelo & tobyndax"
+    print "Created by: hansfilipelo"
     print ""
     print "Usage: "
-    print "    python suspender.py esxiHostname nrOfSimoultaniousSuspends"
+    print "    python tail.py [-n NR] inFile"
     print ""
     sys.exit(1)
 
@@ -27,13 +27,13 @@ if __name__ == "__main__":
         for i in range (0,len(sys.argv)):
             if sys.argv[i] == "-h" or sys.argv[i] == "--help":
                 helpText()
-
+# ---- Look for arguments
             elif sys.argv[i] == "-n":
                 nrOflines = int(sys.argv[i+1])
 
             else:
                     path=sys.argv[i]
-
+# ---------- Open file
 if os.path.isfile(path):
     file=open(path)
     stack=list()
@@ -45,6 +45,10 @@ stack.reverse()
 
 for i in range (0,len(stack)):
     printString=stack.pop()
-    print printString
+    print(printString)
     if i+1 >= nrOflines:
         sys.exit(0)
+
+else:
+    print("File " + filename + " does not exist. Please enter a valid file")
+
