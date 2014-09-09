@@ -1,4 +1,6 @@
 tail
 ====
 
-Tail implementation written in python
+Simple tail implementation written in python. 
+
+

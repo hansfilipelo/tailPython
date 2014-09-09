@@ -12,7 +12,7 @@ def helpText():
     print "Usage: "
     print "    python suspender.py esxiHostname nrOfSimoultaniousSuspends"
     print ""
-    sys.exit
+    sys.exit(1)
 
 # -------------- main program
 if __name__ == "__main__":
@@ -39,9 +39,12 @@ if os.path.isfile(path):
     stack=list()
 
     for line in file.readlines():
-        stack.append(line)
+        stack.append(line.rstrip('\n'))
 
-    for i in range (0,len(stack)):
-        print stack.pop()
-        if i == nrOflines:
-            sys.exit
+stack.reverse()
+
+for i in range (0,len(stack)):
+    printString=stack.pop()
+    print printString
+    if i+1 >= nrOflines:
+        sys.exit(0)
