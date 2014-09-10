@@ -45,29 +45,33 @@ if __name__ == "__main__":
             filePaths.append(argument)
 
 # ---------- Open file
-for path in filePaths:
-    if os.path.isfile(path):
-        file=open(path)
-        stack=list()
-        # Read lines from file to stack
-        for line in file.readlines():
-            stack.append(line.rstrip('\n'))
+    for path in filePaths:
+        if len(filePaths) > 1:
+            print (path + " ---------")
+        
+        if os.path.isfile(path):
+            file=open(path)
+            stack=[]
+            # Read lines from file to stack
+            for line in file.readlines():
+                stack.append(line.rstrip('\n'))
 
-        # Reverse stack
-        stack.reverse()
-    
-        # Print stack
-        for i in range (0,len(stack)):
-            printString=stack.pop()
-            print(printString)
-            # Stop so that we don't print to many lines
-            if i+1 >= nrOflines:
-                sys.exit(0)
-        print ""
-    
-    # Else file does not exist
-    else:
-        print ""
-        print("File " + path + " does not exist. Please enter a valid file")
-        print ""
+            # Reverse stack
+            stack.reverse()
+        
+            # Print stack
+            i=0
+            for line in stack:
+                print(line)
+                i=i+1
+                # Stop so that we don't print to many lines
+                if i+1 >= nrOflines:
+                    break
+            print ""
+        
+        # Else file does not exist
+        else:
+            print ""
+            print("File " + path + " does not exist. Please enter a valid file")
+            print ""
 
