@@ -23,7 +23,7 @@ if __name__ == "__main__":
     argVector.pop(0)
 
     # Check if user needs help
-    if len(sys.argv) < 2:
+    if len(sys.argv) < 1:
         helpText()
 
     else:
@@ -57,10 +57,7 @@ if __name__ == "__main__":
             # Read lines from file to stack
             for line in file.readlines():
                 stack.append(line.rstrip('\n'))
-
-            # Reverse stack
-            stack.reverse()
-        
+            
             # Print stack
             i=0
             for line in stack:
