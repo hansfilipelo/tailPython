@@ -16,43 +16,58 @@ def helpText():
 
 # -------------- main program
 if __name__ == "__main__":
+    
     nrOflines=25
-    path=""
+    filePaths=[]
+    argVector=sys.argv
+    argVector.pop(0)
 
     # Check if user needs help
     if len(sys.argv) < 2:
         helpText()
 
     else:
-        for i in range (0,len(sys.argv)):
-            if sys.argv[i] == "-h" or sys.argv[i] == "--help":
+        for argument in argVector:
+            if argument == "-h " or argument == "--help":
                 helpText()
-# ---- Look for arguments
-            elif sys.argv[i] == "-n":
-                nrOflines = int(sys.argv[i+1])
+        
+        i=int(0)
+        for argument in argVector:
+            if argument == "-n":
+                # Remove "-n" from args
+                argVector.pop(i)
+                # Get nrOfLines
+                nrOflines=int(argVector.pop(i))
+                break
+            i=i+1
 
-            else:
-                    path=sys.argv[i]
+        for argument in argVector:
+            filePaths.append(argument)
+
 # ---------- Open file
-if os.path.isfile(path):
-    file=open(path)
-    stack=list()
-    # Read lines from file to stack
-    for line in file.readlines():
-        stack.append(line.rstrip('\n'))
+for path in filePaths:
+    if os.path.isfile(path):
+        file=open(path)
+        stack=list()
+        # Read lines from file to stack
+        for line in file.readlines():
+            stack.append(line.rstrip('\n'))
+
+        # Reverse stack
+        stack.reverse()
     
-    # Reverse stack
-    stack.reverse()
-
-    # Print stack
-    for i in range (0,len(stack)):
-        printString=stack.pop()
-        print(printString)
-        # Stop so that we don't print to many lines
-        if i+1 >= nrOflines:
-            sys.exit(0)
-
-# Else file does not exist
-else:
-    print("File " + path + " does not exist. Please enter a valid file")
+        # Print stack
+        for i in range (0,len(stack)):
+            printString=stack.pop()
+            print(printString)
+            # Stop so that we don't print to many lines
+            if i+1 >= nrOflines:
+                sys.exit(0)
+        print ""
+    
+    # Else file does not exist
+    else:
+        print ""
+        print("File " + path + " does not exist. Please enter a valid file")
+        print ""
 
