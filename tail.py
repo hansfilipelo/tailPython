@@ -31,6 +31,7 @@ if __name__ == "__main__":
             if argument == "-h " or argument == "--help":
                 helpText()
         
+        # Look for args
         i=int(0)
         for argument in argVector:
             if argument == "-n":
@@ -41,6 +42,7 @@ if __name__ == "__main__":
                 break
             i=i+1
 
+        # Get our filenames
         for argument in argVector:
             filePaths.append(argument)
 
@@ -48,7 +50,7 @@ if __name__ == "__main__":
     for path in filePaths:
         if len(filePaths) > 1:
             print (path + " ---------")
-        
+
         if os.path.isfile(path):
             file=open(path)
             stack=[]
