@@ -38,7 +38,11 @@ if __name__ == "__main__":
                 # Remove "-n" from args
                 argVector.pop(i)
                 # Get nrOfLines
-                nrOflines=int(argVector.pop(i))
+                try:
+                    nrOflines=int(argVector.pop(i))
+                except ValueError:
+                    print "Argument -n needs to be followed by a valid number of lines."
+                    sys.exit(2)
                 break
             i=i+1
 
@@ -58,6 +62,9 @@ if __name__ == "__main__":
             for line in file.readlines():
                 stack.append(line.rstrip('\n'))
             
+            # Reverse stack
+            stack.reverse()
+            
             # Print stack
             i=0
             for line in stack:
@@ -73,4 +80,6 @@ if __name__ == "__main__":
             print ""
             print("File " + path + " does not exist. Please enter a valid file")
             print ""
+            sys.exit(3)
 
+sys.exit(0)
