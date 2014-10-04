@@ -62,19 +62,23 @@ if __name__ == "__main__":
             for line in file.readlines():
                 stack.append(line.rstrip('\n'))
             
-            # Reverse stack
             stack.reverse()
+            output=[]
             
-            # Print stack
+            # Intermediate store
             i=0
             for line in stack:
-                print(line)
+                output.insert(0,line)
                 i=i+1
                 # Stop so that we don't print to many lines
-                if i+1 >= nrOflines:
+                if i+1 > nrOflines:
                     break
-            print ""
-        
+            
+            for line in output:
+                print(line)
+            
+            sys.exit(0)
+            
         # Else file does not exist
         else:
             print ""
